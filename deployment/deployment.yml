@@ -18,7 +18,7 @@ spec:
         app: nodeapp
     spec:
       containers:
-      - image: dhanuar/app:firstimage
+      - image: dhanuar/app:secondimage
         name: nodeapp
         ports:
         - containerPort: 8080
