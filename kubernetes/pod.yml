@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: nodeapp
-      image: dhanuar/eks-app:0.0.2
+      image: dhanuar/eks-app:0.0.3
       ports:
         - containerPort: 8080
