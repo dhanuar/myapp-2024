@@ -59,6 +59,17 @@ pipeline{
                 }
             }
         }
+        stage("nexus upload"){
+            when {
+                branch "featureone"
+            }
+            steps{
+                script{
+
+                     def pomFile = readMavenPom file: 'pom.xml'
+                     nexusArtifactUploader artifacts: [[artifactId: 'myweb', classifier: '', file: "target/myweb-${pomFile.version}", type: 'war']], credentialsId: 'nexus3', groupId: 'in.javahome', nexusUrl: '172.31.8.173:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'my-app', version: '0.0.6'
+                 }
+        }
         
         }
     }
