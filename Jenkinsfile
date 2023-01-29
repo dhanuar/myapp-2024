@@ -15,6 +15,16 @@ pipeline{
                sh "mvn package"
             }
         }
+        stage("SonarQube Analysis"){
+            when {
+                branch "featureone"
+            }
+            steps{
+               withSonarQubeEnv('sonar7') {
+                    sh "mvn sonar:sonar"
+               }
+            }
+        }
         
         }
     }
