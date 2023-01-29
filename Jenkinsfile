@@ -50,9 +50,11 @@ pipeline{
                timeout(time: 1, unit: 'HOURS') {
                 //    For this to work, we should add webhook in sonar
                 //    http://172.31.3.50:8080/sonarqube-webhook/
-                    def qg = waitForQualityGate()
+                    script{
+                        def qg = waitForQualityGate()
                     if (qg.status != 'OK') {
                         error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
                     }
                 }
             }
@@ -60,3 +62,9 @@ pipeline{
         
         }
     }
+
+/*def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+*/
