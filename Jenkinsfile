@@ -20,7 +20,7 @@ pipeline{
                 branch "featureone"
             }
             steps{
-               sh "mvn verify -dskipUnitTests"
+               sh "mvn verify -DskipUnitTests=true"
             }
         }
         
