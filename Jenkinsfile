@@ -44,7 +44,7 @@ pipeline{
         }
         stage("SonarQube Status"){
             when {
-                branch "develop"
+                branch "featureone"
             }
             steps{
                timeout(time: 1, unit: 'HOURS') {
