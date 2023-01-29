@@ -7,12 +7,29 @@ pipeline{
          maven 'maven3'
         }
     stages{
+        stage("Maven unittesting"){
+            when {
+                branch "featureone"
+            }
+            steps{
+               sh "mvn test"
+            }
+        }
+        stage("Maven integration"){
+            when {
+                branch "featureone"
+            }
+            steps{
+               sh "mvn verify -dskipUnitTests"
+            }
+        }
+        
         stage("Maven Build"){
             when {
                 branch "featureone"
             }
             steps{
-               sh "mvn package"
+               sh "mvn clean and install"
             }
         }
         stage("SonarQube Analysis"){
