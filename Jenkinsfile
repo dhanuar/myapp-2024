@@ -29,7 +29,7 @@ pipeline{
                 branch "featureone"
             }
             steps{
-               sh "mvn clean and install"
+               sh "mvn clean install"
             }
         }
         stage("SonarQube Analysis"){
